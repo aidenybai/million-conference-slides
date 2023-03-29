@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-legacy": "^4.0.2",
+    "@vitejs/plugin-react": "^3.1.0",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.3.0",
+    "vite": "^4.2.1",
+    "vite-plugin-pwa": "^0.14.7"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.13",
+    "@shopify/react-shortcuts": "^5.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
