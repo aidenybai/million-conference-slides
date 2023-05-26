@@ -15,3 +15,8 @@ html {
     avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto,
     arial, sans-serif;
 }
+
+.svg {
+  width: 100% !important;
+  height: 30rem !important;
+}

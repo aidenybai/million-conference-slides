@@ -18,7 +18,12 @@
   "dependencies": {
     "@headlessui/react": "^1.7.13",
     "@shopify/react-shortcuts": "^5.0.4",
+    "dedent": "^0.7.0",
+    "framer-motion": "^10.12.7",
+    "jotai": "^2.0.4",
+    "prismjs": "^1.29.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-simple-code-editor": "^0.13.1"
   }
 }

@@ -1,44 +1,49 @@
 import { useState } from 'react';
-import Splash from './components/splash';
-import Layout from './components/layout';
-import { Shortcut } from '@shopify/react-shortcuts';
+import Layout from './layout';
+import SLIDES from './slides/_meta.json';
 
-const SLIDES = [Splash];
+const slides = import.meta.glob('./slides/*.jsx');
+const slideComponents = [];
+
+for (const slide of SLIDES) {
+  try {
+    const mod = await slides[`./slides/${slide}.jsx`]();
+    if (Array.isArray(mod.default)) {
+      slideComponents.push(...mod.default);
+    } else {
+      slideComponents.push(mod.default);
+    }
+  } catch (e) {
+    console.warn(`Could not load slide ${slide} correctly`);
+  }
+}
 
 function App() {
   const [slide, setSlide] = useState(0);
-  const Slide = SLIDES[slide];
+  const Slide = slideComponents[slide];
+
+  const handleBackward = () => {
+    if (slide !== 0) {
+      setSlide((slide) => slide - 1);
+    }
+  };
+
+  const handleForward = () => {
+    if (slide !== slideComponents.length - 1) {
+      setSlide((slide) => slide + 1);
+    }
+  };
 
   return (
     <>
-      <Layout slide={slide}>
+      <Layout
+        slide={slide}
+        maxSlide={slideComponents.length - 1}
+        handleBackward={handleBackward}
+        handleForward={handleForward}
+      >
         <Slide />
       </Layout>
-      <Shortcut
-        ordered={['ArrowLeft']}
-        onMatch={() => {
-          if (slide !== 0) {
-            setSlide((slide) => slide - 1);
-          }
-        }}
-      />
-      <Shortcut
-        ordered={['ArrowRight']}
-        onMatch={() => {
-          if (slide !== SLIDES.length - 1) {
-            setSlide((slide) => slide + 1);
-          }
-        }}
-      />
-      <Shortcut
-        ordered={['Space']}
-        onMatch={() => {
-          console.log('hi');
-          if (slide !== SLIDES.length - 1) {
-            setSlide((slide) => slide + 1);
-          }
-        }}
-      />
     </>
   );
 }
