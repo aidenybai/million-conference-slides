@@ -1,24 +1,7 @@
 import { useState } from 'react';
 import Layout from './layout';
-import SLIDES from './slides/_meta.json';
 
-const slides = import.meta.glob('./slides/*.jsx');
-const slideComponents = [];
-
-for (const slide of SLIDES) {
-  try {
-    const mod = await slides[`./slides/${slide}.jsx`]();
-    if (Array.isArray(mod.default)) {
-      slideComponents.push(...mod.default);
-    } else {
-      slideComponents.push(mod.default);
-    }
-  } catch (e) {
-    console.warn(`Could not load slide ${slide} correctly`);
-  }
-}
-
-function App() {
+function App({ slideComponents }) {
   const [slide, setSlide] = useState(0);
   const Slide = slideComponents[slide];
 
