@@ -38,7 +38,7 @@ export default () => {
       </h1>
       <p className="text-white/40 text-lg font-medium">
         <span>
-          {params.name ?? 'JS DROPS'} • {new Date().toLocaleDateString()}
+          {params.name ?? 'SeattleJS Meetup'} • {new Date().toLocaleDateString()}
         </span>
       </p>
     </motion.div>

@@ -23,8 +23,8 @@ export default () => {
       className="text-7xl text-center flex flex-col justify-center items-center gap-5 leading-normal"
     >
       <p>
-        <span className="font-bold">Block Virtual DOM</span>: Identify the
-        dynamic, skip the static
+        <span className="font-bold">Block Virtual DOM</span>: "Diff the data,
+        not the DOM"
       </p>
     </motion.div>
   );
